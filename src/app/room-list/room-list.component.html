@@ -1,0 +1,35 @@
+<table>
+  <thead>
+    <tr>
+      <th class="p-2">Room number</th>
+      <th class="p-2">Room type</th>
+      <th class="p-2">Amentities</th>
+      <th class="p-2">Price</th>
+      <th class="p-2">Checkin Time</th>
+      <th class="p-2">Checkout Time</th>
+      <th class="p-2">Select room</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      class="text-[#333]"
+      [ngClass]="e ? 'bg-gray-100' : ''"
+      *ngFor="let room of rooms; let e = even; let o = odd"
+    >
+      <td class="p-2">{{ room.roomNumber }}</td>
+      <td class="p-2">{{ room.roomType }}</td>
+      <td class="p-2">{{ room.amentities }}</td>
+      <td class="p-2">{{ room.price | currency: "RUB" }}</td>
+      <td class="p-2">{{ room.checkinTime | date }}</td>
+      <td class="p-2">{{ room.checkoutTime | date }}</td>
+      <td class="p-2">
+        <button
+          (click)="selectRoom(room)"
+          class="py-2 px-4 border rounded border-gray-100 bg-blue-500 text-white"
+        >
+          Select
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

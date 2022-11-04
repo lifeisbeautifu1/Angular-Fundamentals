@@ -1,23 +1,35 @@
-<p>{{ hello }}</p>
-<p [hidden]="isHidden">Count: {{ counter }}</p>
-<div *ngIf="roomsData.availableRooms">
-  Number of rooms: {{ roomsData.availableRooms }}
-</div>
-<button (click)="increment()">Increment</button>
-<button (click)="decrement()">Decrement</button>
-<button (click)="toggle()">Toggle</button>
+<app-container>
+  <p>{{ hello }}</p>
+  <p [hidden]="isHidden">Count: {{ counter }}</p>
+  <div *ngIf="roomsData.availableRooms">
+    Number of rooms: {{ roomsData.availableRooms }}
+  </div>
+  <button (click)="increment()">Increment</button>
+  <button (click)="decrement()">Decrement</button>
+  <button (click)="toggle()">Toggle</button>
 
-<div *ngIf="selectedRoom">
-  {{ selectedRoom | json }}
-</div>
+  <div *ngIf="selectedRoom">
+    {{ selectedRoom | json }}
+  </div>
 
-<div>
-  <button class="p-1 px-3 bg-green-400 rounded text-white" (click)="addRoom()">
-    Add Room
-  </button>
-</div>
+  <div class="flex items-center gap-2">
+    <button
+      class="p-1 px-3 bg-green-400 rounded text-white shadow hover:bg-green-400/90"
+      (click)="addRoom()"
+    >
+      Add Room
+    </button>
+    <button
+      (click)="updateRoom()"
+      class="p-1 px-3 bg-blue-500 rounded text-white shadow hover:bg-blue-500/90"
+    >
+      Update
+    </button>
+  </div>
 
-<app-room-list
-  (selectedRoom)="showRoom($event)"
-  [rooms]="rooms"
-></app-room-list>
+  <app-room-list
+    (selectedRoom)="showRoom($event)"
+    (deleteRoomEvent)="deleteRoom($event)"
+    [rooms]="rooms"
+  ></app-room-list>
+</app-container>

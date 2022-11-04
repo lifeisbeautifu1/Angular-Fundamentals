@@ -8,6 +8,7 @@
       <th class="p-2">Checkin Time</th>
       <th class="p-2">Checkout Time</th>
       <th class="p-2">Select room</th>
+      <th class="p-2">Delete room</th>
     </tr>
   </thead>
   <tbody>
@@ -25,9 +26,17 @@
       <td class="p-2">
         <button
           (click)="selectRoom(room)"
-          class="py-2 px-4 border rounded border-gray-100 bg-blue-500 text-white"
+          class="py-2 px-4 border rounded bg-blue-500 text-white"
         >
           Select
+        </button>
+      </td>
+      <td class="p-2">
+        <button
+          (click)="deleteRoom(room)"
+          class="py-2 px-4 border rounded bg-red-500 text-white"
+        >
+          Delete
         </button>
       </td>
     </tr>

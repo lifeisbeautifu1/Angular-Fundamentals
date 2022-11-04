@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { IRoomsData, IRoom } from '../interfaces';
+import { RoomsService } from '../services/rooms/rooms.service';
 
 @Component({
   selector: 'app-rooms',
@@ -19,38 +20,10 @@ export class RoomsComponent implements OnInit {
   rooms: IRoom[] = [];
   selectedRoom: IRoom | null = null;
 
-  constructor() {}
+  constructor(private readonly roomsService: RoomsService) {}
 
   ngOnInit(): void {
-    this.rooms = [
-      {
-        roomNumber: 1,
-        roomType: 'Deluxe',
-        amentities: 'lorem ipsum',
-        price: 500,
-        photos: '',
-        checkinTime: new Date('2-Nov-2022'),
-        checkoutTime: new Date('4-Nov-2022'),
-      },
-      {
-        roomNumber: 2,
-        roomType: 'Deluxe',
-        amentities: 'lorem ipsum',
-        price: 400,
-        photos: '',
-        checkinTime: new Date('1-Nov-2022'),
-        checkoutTime: new Date('5-Nov-2022'),
-      },
-      {
-        roomNumber: 3,
-        roomType: 'Deluxe',
-        amentities: 'lorem ipsum',
-        price: 300,
-        photos: '',
-        checkinTime: new Date('1-Nov-2022'),
-        checkoutTime: new Date('6-Nov-2022'),
-      },
-    ];
+    this.roomsService.getRooms().subscribe((data) => (this.rooms = data));
   }
 
   increment(): void {
@@ -77,6 +50,26 @@ export class RoomsComponent implements OnInit {
       checkinTime: new Date('1-Nov-2022'),
       checkoutTime: new Date('3-Nov-2022'),
     };
-    this.rooms = [...this.rooms, newRoom];
+
+    this.roomsService.addRoom(newRoom).subscribe((data) => (this.rooms = data));
+  }
+
+  updateRoom() {
+    const updatedRoom = {
+      roomNumber: 3,
+      roomType: 'Deluxe',
+      amentities: 'lorem ipsum',
+      price: +(Math.random() * 500).toFixed(0),
+      photos: '',
+      checkinTime: new Date('1-Nov-2022'),
+      checkoutTime: new Date('3-Nov-2022'),
+    };
+    this.roomsService
+      .updateRoom(updatedRoom)
+      .subscribe((data) => (this.rooms = data));
+  }
+
+  deleteRoom(rooms: IRoom[]) {
+    this.rooms = rooms;
   }
 }

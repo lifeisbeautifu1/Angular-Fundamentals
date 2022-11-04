@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 
 import { IRoom } from '../interfaces';
+import { RoomsService } from '../services/rooms/rooms.service';
 
 @Component({
   selector: 'app-room-list',
@@ -22,7 +23,9 @@ export class RoomListComponent implements OnInit, OnChanges {
 
   @Output() selectedRoom = new EventEmitter<IRoom>();
 
-  constructor() {}
+  @Output() deleteRoomEvent = new EventEmitter<IRoom[]>();
+
+  constructor(private readonly roomsService: RoomsService) {}
 
   ngOnInit(): void {}
 
@@ -32,5 +35,11 @@ export class RoomListComponent implements OnInit, OnChanges {
 
   selectRoom(room: IRoom) {
     this.selectedRoom.emit(room);
+  }
+
+  deleteRoom(room: IRoom) {
+    this.roomsService
+      .deleteRoom(room)
+      .subscribe((data) => this.deleteRoomEvent.emit(data));
   }
 }

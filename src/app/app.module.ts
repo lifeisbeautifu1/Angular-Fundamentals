@@ -20,6 +20,7 @@ import { MatListModule } from '@angular/material/list';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RoomComponent } from './room/room.component';
 import { RoomFormComponent } from './room-form/room-form.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { RoomFormComponent } from './room-form/room-form.component';
     NotFoundComponent,
     RoomComponent,
     RoomFormComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

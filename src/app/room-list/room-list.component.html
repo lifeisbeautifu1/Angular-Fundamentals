@@ -24,9 +24,15 @@
       <td class="p-2">{{ room.checkinTime | date }}</td>
       <td class="p-2">{{ room.checkoutTime | date }}</td>
       <td class="p-2">
-        <button
+        <!-- <button
           (click)="selectRoom(room)"
           class="py-2 px-4 border rounded bg-blue-500 text-white"
+        >
+          Select
+        </button> -->
+        <button
+          class="py-1 px-3 bg-gray-900 rounded text-white"
+          [routerLink]="['/room', room.roomNumber]"
         >
           Select
         </button>

@@ -1,0 +1,73 @@
+{{ room | json }}
+
+<form #roomsForm="ngForm" (ngSubmit)="addRoom(roomsForm)" class="p-4">
+  <div class="my-2">
+    <input
+      required
+      class="p-2 w-80 rounded border border-gray-200"
+      [(ngModel)]="room.roomType"
+      type="text"
+      name="roomType"
+      placeholder="Room type"
+    />
+  </div>
+  <div class="my-2">
+    <input
+      required
+      class="p-2 w-80 rounded border border-gray-200"
+      [(ngModel)]="room.amentities"
+      type="text"
+      name="amentities"
+      placeholder="Amentities"
+    />
+  </div>
+  <div class="my-2">
+    <input
+      required
+      class="p-2 w-80 rounded border border-gray-200"
+      [(ngModel)]="room.price"
+      type="number"
+      name="price"
+      placeholder="Price"
+    />
+  </div>
+  <div class="my-2">
+    <input
+      required
+      class="p-2 w-80 rounded border border-gray-200"
+      [(ngModel)]="room.photos"
+      type="text"
+      name="photos"
+      placeholder="Photos (links)"
+    />
+  </div>
+  <div class="my-2">
+    <input
+      required
+      class="p-2 w-80 rounded border border-gray-200"
+      [(ngModel)]="room.checkinTime"
+      type="date"
+      name="checkinTime"
+      placeholder="Checkin Time"
+    />
+  </div>
+  <div class="my-2">
+    <input
+      required
+      class="p-2 w-80 rounded border border-gray-200"
+      [(ngModel)]="room.checkoutTime"
+      type="date"
+      name="checkoutTime"
+      placeholder="Checkout Time"
+    />
+  </div>
+  <div class="my-2">
+    <button
+      [disabled]="roomsForm.invalid"
+      type="submit"
+      class="py-2 px-4 rounded shadow hover:bg-green-600/90 bg-green-600 text-white"
+    >
+      Submit
+    </button>
+  </div>
+</form>

@@ -1,13 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RoomListComponent } from './room-list/room-list.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RoomFormComponent } from './room-form/room-form.component';
+import { RoomComponent } from './room/room.component';
+import { RoomsComponent } from './rooms/rooms.component';
 import { SecondPageComponent } from './second-page/second-page.component';
 
 const routes: Routes = [
   {
     path: 'rooms',
-    component: RoomListComponent,
+    component: RoomsComponent,
+  },
+  {
+    path: 'room/:id',
+    component: RoomComponent,
+  },
+  {
+    path: 'rooms/add',
+    component: RoomFormComponent,
   },
   {
     path: 'page',
@@ -17,6 +28,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'rooms',
     pathMatch: 'full',
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
